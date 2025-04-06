@@ -24,7 +24,8 @@
     "free_limit_prize_message": "Just 1 xtr or 0.1 ton.",
     "limit_placeholder": "Pay {{amount}} to send message...",
     "first_bot_message": "The Matrix has you.",
-    "sure_solved_riddle": "Click if you're sure you've solved the riddle"
+    "sure_solved_riddle": "Click if you're sure you've solved the riddle",
+    "my_orders": "My orders"
   },
 
   "prize_pool": {

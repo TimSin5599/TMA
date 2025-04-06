@@ -14,20 +14,24 @@ export const MessageList = ({
   animationCompleteHandler: () => void;
 }) => {
   return (
-    <div className="flex flex-col h-full overflow-y-auto overflow-hidden gap-4">
+    <div className="flex flex-col h-full overflow-y-auto overflow-hidden gap-4 mt-10">
       {messages.map((message) => (
         <div
           key={message.id}
           className={`${
             (message.from === "user"
-              ? "self-end text-white text-right"
-              : "self-start text-left") + " max-w-[80%] break-words "
+              ? "self-end text-white text-right mr-2"
+              : "self-start text-left ml-2") + " max-w-[80%] break-words "
           }`}
           style={{
             filter:
               message.from === "user"
-                ? "drop-shadow(0 0 10px #55B146)"
+                ? "drop-shadow(0 0 8px #55B146)"
                 : "none",
+            color:
+              message.from === "user"
+                ? "white"
+                : "#DEF249",
           }}
         >
           <ChatMessage

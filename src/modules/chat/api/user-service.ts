@@ -18,12 +18,4 @@ export const userService = {
     });
     return data;
   },
-  getSeedPhrase: async ({ userId }: { userId: number }): Promise<string[]> => {
-    const { data } = await api.get<string[]>("/get_seed_phrase", {
-      headers: {
-        userid: userId,
-      },
-    });
-    return data;
-  },
 };

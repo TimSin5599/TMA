@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import { useMessages } from "../stores/use-messages";
 import { useTranslation } from "react-i18next";
 import {
-  MAX_GUESSED_WORDS,
   useGuessedWords,
 } from "../stores/use-guessed-words";
 import { userService } from "../api/user-service";
@@ -22,11 +21,10 @@ export const useChat = () => {
     markMessagesAsRead,
     fetchMessages,
     setIsFetchingMessages,
-    setFirstMessage,
   } = useMessages();
 
   const { setSolvedTasks, solved, unsolved, getCurrentTask } = useTasks();
-  const { pushGuessedWord, setSeedPhrase, setGuessedWords, setIsShowModal } =
+  const { pushGuessedWord, setSeedPhrase, setIsShowModal } =
     useGuessedWords();
 
   const [messageValue, setMessageValue] = useState("");
@@ -50,38 +48,14 @@ export const useChat = () => {
           userId: user?.id || 0,
           taskId: stat.solved + 1,
         })
-          .then(() => {
-            userService
-              .getSeedPhrase({ userId: user?.id || 0 })
-              .then((seedPhrase) => {
-                setSeedPhrase(seedPhrase);
-                setGuessedWords(
-                  seedPhrase
-                    .slice(
-                      seedPhrase.length - MAX_GUESSED_WORDS,
-                      seedPhrase.length
-                    )
-                    .filter((w) => w != "?")
-                );
-                setFirstMessage({
-                  text: seedPhrase.join(", "),
-                  from: "bot",
-                  id: Date.now(),
-                  isNew: true,
-                  type: "words",
-                });
-                setIsFetchingMessages(false);
-                scrollToBottom();
-              })
-              .catch((error) => {
-                toast(error?.response?.data || error?.message || error);
-                console.error(error);
-              });
-          })
-          .catch((error) => {
-            toast(error?.response?.data || error?.message || error);
-            console.error(error);
-          });
+        .then(() => {
+            setSeedPhrase([""]);
+            setIsFetchingMessages(false);
+        })
+        .catch((error) => {
+          toast(error?.response?.data || error?.message || error);
+          console.error(error);
+        });
       })
       .catch((error) => {
         toast(error?.response?.data || error?.message || error);

@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
       host: true,
       proxy: {
         "/api": {
-          target: env.VITE_API_URL,
+          target: "https://taiga-labs.pro/matapi/api",
           changeOrigin: true,
           secure: false,
           rewrite: (path) => path.replace(/^\/api/, ""),

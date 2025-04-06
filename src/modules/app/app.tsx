@@ -16,7 +16,7 @@ export function App() {
   const lp = useLaunchParams();
   const isDark = useSignal(miniApp.isDark);
 
-  const { informed, setInformed } = useInformed();
+  const { setInformed } = useInformed();
   const { setTasks, setIsTaskDescriptionLoading } = useTasks();
   const { setIsTvlLoading, setTvl } = useTvl();
 
@@ -50,7 +50,7 @@ export function App() {
       platform={["macos", "ios"].includes(lp.platform) ? "ios" : "base"}
     >
       <BrowserRouter basename="matrix">
-        <Layout showNavbar={!!informed}>
+        <Layout> {/*showNavbar={!!informed}*/}
           <Routes>
             {routes.map((route) => (
               <Route key={route.path} {...route} />

@@ -12,6 +12,7 @@ import "./index.css";
 import "./modules/common/tg/mock-env.ts";
 import { Root } from "./modules/app/root.tsx";
 import { EnvUnsupported } from "./modules/common/ui/evn-unsupported.tsx";
+import {StrictMode} from "react";
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 
@@ -19,9 +20,9 @@ try {
   init(retrieveLaunchParams().startParam === "debug" || import.meta.env.DEV);
 
   root.render(
-    // <StrictMode>
-    <Root />
-    // </StrictMode>
+    <StrictMode>
+      <Root />
+    </StrictMode>
   );
 } catch (e) {
   root.render(<EnvUnsupported />);

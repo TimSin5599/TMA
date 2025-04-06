@@ -199,14 +199,14 @@ export const ChatForm = ({
         onFocus={openLimitMessageBoxHandler}
         disabled={isFetchingMessages}
         placeholder={messageInputPlaceholder}
-        className="text-white placeholder-white/20 w-full px-2 bg-transparent rounded border border-solid border-white/20 disabled:cursor-default disabled:opacity-35"
+        className="bg-[#063D5F] text-[#0E7EAE] placeholder-[#0E7EAE] w-full px-2 bg-transparent rounded border border-solid border-[#0E7EAE] disabled:cursor-default disabled:opacity-35"
       />
 
       {isMessagesLimitReached ? (
         <Button
           type="submit"
           loading={isPaymentLoading}
-          className="h-12 w-12 text-white/20 animate-upscale"
+          className="bg-[#063D5F] h-12 w-12 text-[#0E7EAE] border border-solid border-[#0E7EAE] animate-upscale "
         >
           <span>$</span>
         </Button>
@@ -214,9 +214,9 @@ export const ChatForm = ({
         <Button
           type="submit"
           disabled={isSendMessageButtonDisabled}
-          className="h-12 w-12 text-white/20"
+          className="bg-[#063D5F] h-12 w-12 text-[#0E7EAE] border-solid border-[#0E7EAD]"
         >
-          <RightArrowIcon />
+          <RightArrowIcon className="text-[#0E7EAE]" />
         </Button>
       )}
     </form>

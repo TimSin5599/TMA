@@ -5,6 +5,8 @@ services:
     build: .
     ports:
       - "80:80"
-    environment:
-      - VITE_API_URL=${VITE_API_URL}
-      - VITE_BOT_USERNAME=${VITE_BOT_USERNAME}
+    env_file:
+      - .env.example
+#    environment:
+#      - VITE_API_URL=${VITE_API_URL}
+#      - VITE_BOT_USERNAME=${VITE_BOT_USERNAME}

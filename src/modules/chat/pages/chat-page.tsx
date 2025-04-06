@@ -16,9 +16,7 @@ export const ChatPage = () => {
 
   const {
     limitMessageBoxClosed,
-    prizePoolMessageBoxClosed,
     onCloseLimitMessageBox,
-    onClosePrizePoolMessageBox,
     openLimitMessageBox,
   } = useMessageBoxes();
 
@@ -35,15 +33,15 @@ export const ChatPage = () => {
   const { isShowModal, setIsShowModal } = useGuessedWords();
 
   return (
-    <div className="flex flex-col h-full overflow-hidden">
+    <div className="bg-gradient-to-b from-[#032340] to-[#085076] flex flex-col h-full w-full overflow-hidden">
       <ChatHeader setMessageValue={setMessageValue} />
 
-      <section className="p-4 flex flex-col h-full overflow-hidden gap-4">
-        {!prizePoolMessageBoxClosed && (
-          <MessageBox onClose={onClosePrizePoolMessageBox}>
-            {t("chat.prize_pool_message")}
-          </MessageBox>
-        )}
+      <section className="p-2 flex flex-col h-full overflow-hidden gap-4">
+        {/*{!prizePoolMessageBoxClosed && (*/}
+        {/*  <MessageBox onClose={onClosePrizePoolMessageBox}>*/}
+        {/*    {t("chat.prize_pool_message")}*/}
+        {/*  </MessageBox>*/}
+        {/*)}*/}
 
         {isFetchingMessages ? (
           <div className="flex items-center justify-center h-full">
@@ -60,12 +58,12 @@ export const ChatPage = () => {
         )}
       </section>
 
-      <div className="flex flex-col gap-4 p-4 pt-0">
+      <div className="flex flex-col gap-4 p-4 pt-0" >
         {!limitMessageBoxClosed && (
-          <MessageBox onClose={onCloseLimitMessageBox}>
+          <MessageBox onClose={onCloseLimitMessageBox} >
             {t("chat.free_limit_message")}
             {"\n"}
-            <span className="text-[#ccc]/40">
+            <span className="text-[#ccc]/40" >
               {t("chat.free_limit_prize_message")}
             </span>
           </MessageBox>

@@ -24,7 +24,8 @@
     "free_limit_prize_message": "Всего 1 xtr или 0.1 ton",
     "limit_placeholder": "Заплатите {{amount}}, чтобы отправить сообщение...",
     "first_bot_message": "Матрица управляет тобой.",
-    "sure_solved_riddle": "Нажмите, если уверены, что отгадали загадку"
+    "sure_solved_riddle": "Нажмите, если уверены, что отгадали загадку",
+    "my_orders": "Мои заказы"
   },
 
   "prize_pool": {
