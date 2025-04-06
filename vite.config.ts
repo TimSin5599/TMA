@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    base: "/matrix/",
+    base: "/",
     define: {
       global: "window",
     },
