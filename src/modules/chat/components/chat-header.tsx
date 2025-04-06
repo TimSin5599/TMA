@@ -28,7 +28,7 @@ export const ChatHeader = () => {
         </svg>
 
         <p className="font-thin text-[#DEF249] ml-2 rounded-full p-2"
-           style={{border: "solid", minWidth: "103px", height: "37px",  color: "#DEF249", letterSpacing: "-0.3px", verticalAlign: "center", fontSize: "14px"}}
+           style={{border: "1px solid #DEF249", minWidth: "103px", height: "37px",  color: "#DEF249", letterSpacing: "-0.3px", verticalAlign: "center", fontSize: "14px"}}
         >
           {t("chat.my_orders")}
         </p>
