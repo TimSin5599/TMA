@@ -199,7 +199,7 @@ export const ChatForm = ({
         onFocus={openLimitMessageBoxHandler}
         disabled={isFetchingMessages}
         placeholder={messageInputPlaceholder}
-        className="bg-[#063D5F] text-[#0E7EAE] placeholder-[#0E7EAE] w-full px-2 bg-transparent rounded border border-solid border-[#0E7EAE] disabled:cursor-default disabled:opacity-35"
+        className="bg-[#063D60] text-[#0E7EAE] placeholder-[#0E7EAE] w-full px-2 bg-transparent rounded border border-solid border-[#0E7EAE] disabled:cursor-default disabled:opacity-35"
       />
 
       {isMessagesLimitReached ? (
@@ -214,7 +214,7 @@ export const ChatForm = ({
         <Button
           type="submit"
           disabled={isSendMessageButtonDisabled}
-          className="bg-[#063D5F] h-12 w-12 text-[#0E7EAE] border-solid border-[#0E7EAD]"
+          className="bg-[#063D60] h-12 w-12 text-[#0E7EAE] border-solid border-[#0E7EAF]"
         >
           <RightArrowIcon className="text-[#0E7EAE]" />
         </Button>
