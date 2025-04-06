@@ -6,7 +6,7 @@ services:
     ports:
       - "80:80"
     env_file:
-      - .env.example
+      - .env
 #    environment:
 #      - VITE_API_URL=${VITE_API_URL}
 #      - VITE_BOT_USERNAME=${VITE_BOT_USERNAME}
