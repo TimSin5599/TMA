@@ -1,23 +1,19 @@
 import { useTranslation } from "react-i18next";
 import { Button } from "@telegram-apps/telegram-ui";
 
-export const ChatHeader = ({
-  setMessageValue,
-}: {
-  setMessageValue: (value: string) => void;
-}) => {
-  const { t, i18n } = useTranslation();
+export const ChatHeader = () => {
+  const { t } = useTranslation();
 
-  const lang = i18n.language === "en" ? "en" : "ru";
+  // const lang = i18n.language === "en" ? "en" : "ru";
 
-  const sureSolvedHandler = () => {
-    const message =
-      lang == "en"
-        ? "Did I solve the riddle completely?"
-        : "Я отгадал загадку полностью?";
-
-    setMessageValue(message);
-  };
+  // const sureSolvedHandler = () => {
+  //   const message =
+  //     lang == "en"
+  //       ? "Did I solve the riddle completely?"
+  //       : "Я отгадал загадку полностью?";
+  //
+  //   setMessageValue(message);
+  // };
 
   return (
     <div>
@@ -32,7 +28,7 @@ export const ChatHeader = ({
         </svg>
 
         <p className="font-thin text-[#DEF249] ml-2 rounded-full p-2"
-           style={{border: "solid", minWidth: "103px", height: "37px",  color: "#DEF249", paddingTop: "10px", paddingBottom: "10px", paddingRight: "12px", paddingLeft: "12px", letterSpacing: "-0.3px", alignItems: "center", verticalAlign: "center", fontSize: "14px"}}
+           style={{border: "solid", minWidth: "103px", height: "37px",  color: "#DEF249", letterSpacing: "-0.3px", verticalAlign: "center", fontSize: "14px"}}
         >
           {t("chat.my_orders")}
         </p>

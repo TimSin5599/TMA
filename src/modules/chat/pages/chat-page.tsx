@@ -34,7 +34,7 @@ export const ChatPage = () => {
 
   return (
     <div className="bg-gradient-to-b from-[#032340] to-[#085076] flex flex-col h-full w-full overflow-hidden">
-      <ChatHeader setMessageValue={setMessageValue} />
+      <ChatHeader />
 
       <section className="p-2 flex flex-col h-full overflow-hidden gap-4">
         {/*{!prizePoolMessageBoxClosed && (*/}
