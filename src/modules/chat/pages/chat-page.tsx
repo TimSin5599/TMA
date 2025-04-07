@@ -33,7 +33,7 @@ export const ChatPage = () => {
   const { isShowModal, setIsShowModal } = useGuessedWords();
 
   return (
-    <div className="bg-gradient-to-b from-[#032340] to-[#085076] flex flex-col h-full w-full overflow-hidden">
+    <div className="bg-gradient-to-b from-[#032340] to-[#085076] flex flex-col h-screen pb-safe-area-bottom w-full">
       <ChatHeader />
 
       <section className="sticky p-2 flex flex-col h-full overflow-hidden gap-4">
@@ -58,7 +58,7 @@ export const ChatPage = () => {
         )}
       </section>
 
-      <div className="sticky flex flex-col gap-4 p-4 pt-0" >
+      <div className="flex flex-col gap-4 p-4 pt-0" >
         {!limitMessageBoxClosed && (
           <MessageBox onClose={onCloseLimitMessageBox} >
             {t("chat.free_limit_message")}
