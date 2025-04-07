@@ -36,7 +36,7 @@ export const ChatPage = () => {
     <div className="bg-gradient-to-b from-[#032340] to-[#085076] flex flex-col h-full w-full overflow-hidden">
       <ChatHeader />
 
-      <section className="p-2 flex flex-col h-full overflow-hidden gap-4">
+      <section className="sticky p-2 flex flex-col h-full overflow-hidden gap-4">
         {/*{!prizePoolMessageBoxClosed && (*/}
         {/*  <MessageBox onClose={onClosePrizePoolMessageBox}>*/}
         {/*    {t("chat.prize_pool_message")}*/}
@@ -58,7 +58,7 @@ export const ChatPage = () => {
         )}
       </section>
 
-      <div className="flex flex-col gap-4 p-4 pt-0" >
+      <div className="sticky flex flex-col gap-4 p-4 pt-0" >
         {!limitMessageBoxClosed && (
           <MessageBox onClose={onCloseLimitMessageBox} >
             {t("chat.free_limit_message")}
