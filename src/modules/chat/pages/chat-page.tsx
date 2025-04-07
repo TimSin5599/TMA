@@ -41,6 +41,7 @@ export const ChatPage = () => {
               background: 'transparent',
               transform: 'translateZ(0)',
               zIndex: 10,
+              alignSelf: 'flex-start',
           }}>
 
               {isFetchingMessages ? (
