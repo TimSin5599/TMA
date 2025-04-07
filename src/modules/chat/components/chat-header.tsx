@@ -1,9 +1,9 @@
 import { useTranslation } from "react-i18next";
 import {Button} from "@telegram-apps/telegram-ui";
-import {enableClosingConfirmation} from "@telegram-apps/sdk-react";
+import { miniApp } from '@telegram-apps/sdk';
 
 export const ChatHeader = () => {
-  const { t } = useTranslation();
+    const { t } = useTranslation();
 
   // const lang = i18n.language === "en" ? "en" : "ru";
 
@@ -20,7 +20,7 @@ export const ChatHeader = () => {
     <div>
       <div
           className="text-center py-2 px-1 mx-1 text-white flex flex-row items-center justify-between">
-        <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={enableClosingConfirmation}>
+        <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={() => miniApp.close()}>
           <path
               d="M37.8 22.5C37.8 30.96 30.96 37.8 22.5 37.8C14.04 37.8 7.2 30.96 7.2 22.5C7.2 14.04 14.04 7.2 22.5 7.2C30.96 7.2 37.8 14.04 37.8 22.5ZM9 22.5C9 29.97 15.03 36 22.5 36C29.97 36 36 29.97 36 22.5C36 15.03 29.97 9 22.5 9C15.03 9 9 15.03 9 22.5Z"
               fill="#0D719E"/>
