@@ -17,11 +17,6 @@ export const ChatHeader = () => {
     const close = () => {
         miniApp.close()
     }
-    if (miniApp.mount.isAvailable()) {
-        miniApp.mount();
-        miniApp.isMounted();
-    }
-
 
   // const lang = i18n.language === "en" ? "en" : "ru";
 
