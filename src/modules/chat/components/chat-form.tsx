@@ -2,8 +2,8 @@ import { useTranslation } from "react-i18next";
 import { RightArrowIcon } from "@/modules/common/icons/right-arrow-icon";
 import { Button } from "@/modules/common/ui/button";
 import { useMessages } from "../stores/use-messages";
-import { FormEvent, useState } from "react";
-import { initData, openInvoice, useSignal } from "@telegram-apps/sdk-react";
+import { FormEvent } from "react";
+import { initData, useSignal } from "@telegram-apps/sdk-react";
 import { toast } from "react-toastify";
 import { api } from "@/modules/common/api";
 import { useSettings } from "@/modules/settings/stores/use-settings";
@@ -33,8 +33,6 @@ export const ChatForm = ({
 
   const [tonConnectUI] = useTonConnectUI();
   const user = useSignal(initData.user);
-
-  const [starsPaymentLink, setStarsPaymentLink] = useState<string | null>(null);
 
   const { getCurrentTask } = useTasks();
 
@@ -94,45 +92,10 @@ export const ChatForm = ({
   };
 
   const telegramStarsPaymentHandler = async () => {
-    const link = await fetchStarsPaymentLink();
-
-    if (!link) {
-      return;
-    }
-
-    const status = await openInvoice(link, "url");
-
-    if (status === "paid") {
-      toast(t("payment.success"));
-      incrementMessagesLimit();
-      closeLimitMessageBox();
-    } else if (status === "error" || status === "failed") {
-      // TODO: add retries limit and after show error (+ i18n)
-      // telegramStarsPaymentHandler();
-      //
-      toast(t("payment.invoice_error"));
-    } else if (status === "cancelled") {
-      return;
-    } else {
-      toast(t("payment.unknown_status", { status }));
-    }
-  };
-
-  const fetchStarsPaymentLink = async () => {
-    if (starsPaymentLink) {
-      return starsPaymentLink;
-    }
-
-    try {
-      const response = await api.get<string>(
-        `get_invoice_link/${getCurrentTask()}`
-      );
-      setStarsPaymentLink(response.data);
-      return response.data;
-    } catch (error) {
-      toast(t("payment.get_link_error"));
-      return null;
-    }
+    // toast(t("payment.success"));
+    incrementMessagesLimit();
+    setMessageValue("");
+    // closeLimitMessageBox();
   };
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
@@ -149,7 +112,7 @@ export const ChatForm = ({
   };
 
   return (
-    <form onSubmit={submitHandler} className="flex gap-4">
+    <form onSubmit={submitHandler} className="flex gap-4 sticky bottom-0">
       <input
         type="text"
         value={messageValue}
