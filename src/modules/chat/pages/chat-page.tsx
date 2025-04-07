@@ -5,11 +5,9 @@ import { Spinner } from "@telegram-apps/telegram-ui";
 import { ChatForm } from "../components/chat-form";
 import { ChatHeader } from "../components/chat-header";
 import { useMessages } from "../stores/use-messages";
-import {useFixedStyleWithIOsKeyboard} from "react-ios-keyboard-viewport";
 
 export const ChatPage = () => {
   const { isFetchingMessages, messages } = useMessages();
-  const { fixedTop } = useFixedStyleWithIOsKeyboard();
 
   const {
     onCloseLimitMessageBox,
@@ -28,7 +26,7 @@ export const ChatPage = () => {
 
 
   return (
-      <div className="fixed h-full bg-gradient-to-b from-[#032340] to-[#085076] flex flex-col w-full" style={fixedTop}>
+      <div className="fixed h-full bg-gradient-to-b from-[#032340] to-[#085076] flex flex-col w-full">
           <ChatHeader/>
 
           <section className="sticky p-2 flex flex-col overflow-hidden gap-4 h-screen" style={{
