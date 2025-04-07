@@ -32,9 +32,7 @@ export const ChatPage = () => {
           <section className="sticky p-2 flex flex-col overflow-hidden gap-4 h-screen" style={{
               position: '-webkit-sticky',
               overflowY: 'auto',
-              background: 'transparent',
               transform: 'translateZ(0)',
-              alignSelf: 'flex-start',
           }}>
 
               {isFetchingMessages ? (
