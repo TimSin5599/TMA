@@ -14,7 +14,7 @@ export const MessageList = ({
   animationCompleteHandler: () => void;
 }) => {
   return (
-    <div className="flex flex-col h-full overflow-y-auto overflow-hidden gap-4 mt-10">
+    <div className="flex flex-col justify-end h-full overflow-y-auto overflow-hidden gap-4 mt-10">
       {messages.map((message) => (
         <div
           key={message.id}

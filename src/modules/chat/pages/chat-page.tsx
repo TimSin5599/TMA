@@ -31,14 +31,9 @@ export const ChatPage = () => {
 
           <section className="sticky p-2 flex flex-col overflow-hidden gap-4 h-screen" style={{
               position: '-webkit-sticky',
-              top: 56,
-              bottom: 80,
-              left: 0,
-              right: 0,
               overflowY: 'auto',
               background: 'transparent',
               transform: 'translateZ(0)',
-              zIndex: 10,
               alignSelf: 'flex-start',
           }}>
 
