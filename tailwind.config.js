@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  safelist: ['border-[#0E7EAE]', 'text-[#0E7EAE]'],
   theme: {
     extend: {
       keyframes: {
@@ -12,7 +13,11 @@ export default {
       animation: {
         upscale: "upscale 1s ease-in-out infinite",
       },
+      fontFamily: {
+        courier: ['Courier New', 'Courier', 'monospace'],
+      }
     },
   },
   plugins: [],
+
 };

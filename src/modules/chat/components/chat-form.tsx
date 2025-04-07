@@ -207,6 +207,7 @@ export const ChatForm = ({
           type="submit"
           loading={isPaymentLoading}
           className="bg-[#063D5F] h-12 w-12 text-[#0E7EAE] border border-solid border-[#0E7EAE] animate-upscale "
+          style={{border: "1px solid #0E7EAE"}}
         >
           <span>$</span>
         </Button>
@@ -214,7 +215,8 @@ export const ChatForm = ({
         <Button
           type="submit"
           disabled={isSendMessageButtonDisabled}
-          className="bg-[#063D60] h-12 w-12 text-[#0E7EAE] border-solid border-[#0E7EAF]"
+          className="bg-[#063D60] h-12 w-12 text-[#0E7EAE]"
+          style={{border: "1px solid #0E7EAE"}}
         >
           <RightArrowIcon className="text-[#0E7EAE]" />
         </Button>

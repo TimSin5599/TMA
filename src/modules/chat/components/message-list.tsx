@@ -21,7 +21,7 @@ export const MessageList = ({
           className={`${
             (message.from === "user"
               ? "self-end text-white text-right mr-2"
-              : "self-start text-left ml-2") + " max-w-[80%] break-words "
+              : "self-start text-left ml-2 font-courier") + " max-w-[80%] break-words "
           }`}
           style={{
             filter:
@@ -32,6 +32,7 @@ export const MessageList = ({
               message.from === "user"
                 ? "white"
                 : "#DEF249",
+            fontFamily: "'Courier New', Courier, monospace",
           }}
         >
           <ChatMessage
