@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => {
       outDir: "./dist/matrix",
     }
     ,
-    base: "/matrix/",
+    base: "/matrix",
     define: {
       global: "window",
     },

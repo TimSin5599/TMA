@@ -14,12 +14,9 @@ import { useTasks } from "../stores/use-tasks";
 const sleep = (ms = 1000) => new Promise((r) => setTimeout(r, ms));
 
 export const ChatForm = ({
-  isAwaitingAnswer,
   messageValue,
   setMessageValue,
-  openLimitMessageBox,
   closeLimitMessageBox,
-  sendMessage,
 }: {
   isAwaitingAnswer: boolean;
   messageValue: string;
@@ -31,43 +28,17 @@ export const ChatForm = ({
   const { t } = useTranslation();
   const { selectedPaymentType } = useSettings();
   const {
-    isFetchingMessages,
-    messages,
-    messagesLimit,
     incrementMessagesLimit,
   } = useMessages();
 
   const [tonConnectUI] = useTonConnectUI();
   const user = useSignal(initData.user);
 
-  const [isPaymentLoading, setIsPaymentLoading] = useState(false);
   const [starsPaymentLink, setStarsPaymentLink] = useState<string | null>(null);
 
   const { getCurrentTask } = useTasks();
-  const userMessages = messages.filter((message) => message.from === "user");
-  const isMessagesLimitReached = userMessages.length >= messagesLimit;
-
-  const isSendMessageButtonDisabled =
-    !messageValue ||
-    isMessagesLimitReached ||
-    isAwaitingAnswer ||
-    isFetchingMessages;
-
-  const messageInputPlaceholder = isFetchingMessages
-    ? ""
-    : isMessagesLimitReached
-    ? t("chat.limit_placeholder", { amount: "$291.95" })
-    : `${userMessages.length} / ${messagesLimit} ${t("chat.free_message")}`;
-
-  const openLimitMessageBoxHandler = () => {
-    if (isMessagesLimitReached) {
-      openLimitMessageBox();
-    }
-  };
 
   const tonPaymentHandler = async () => {
-    setIsPaymentLoading(true);
-
     const transaction: SendTransactionRequest = {
       validUntil: Date.now() + 5 * 60 * 1000,
       messages: [
@@ -92,8 +63,6 @@ export const ChatForm = ({
       }
     } catch {
       //
-    } finally {
-      setIsPaymentLoading(false);
     }
   };
 
@@ -154,8 +123,6 @@ export const ChatForm = ({
       return starsPaymentLink;
     }
 
-    setIsPaymentLoading(true);
-
     try {
       const response = await api.get<string>(
         `get_invoice_link/${getCurrentTask()}`
@@ -165,18 +132,12 @@ export const ChatForm = ({
     } catch (error) {
       toast(t("payment.get_link_error"));
       return null;
-    } finally {
-      setIsPaymentLoading(false);
     }
   };
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!isMessagesLimitReached) {
-      sendMessage(messageValue);
-      return;
-    }
 
     if (selectedPaymentType === "STARS") {
       telegramStarsPaymentHandler();
@@ -194,34 +155,18 @@ export const ChatForm = ({
         value={messageValue}
         onChange={(e) => {
           setMessageValue(e.target.value);
-          openLimitMessageBoxHandler();
         }}
-        onFocus={openLimitMessageBoxHandler}
-        disabled={isFetchingMessages}
-        placeholder={messageInputPlaceholder}
         className="bg-[#063D60] text-[#0E7EAE] placeholder-[#0E7EAE] w-full px-2 bg-transparent rounded border border-solid border-[#0E7EAE] disabled:cursor-default disabled:opacity-35"
         style={{fontFamily: "'Courier New', Courier, monospace", fontSize: "16px"}}
       />
 
-      {isMessagesLimitReached ? (
-        <Button
+      <Button
           type="submit"
-          loading={isPaymentLoading}
-          className="bg-[#063D5F] h-12 w-12 text-[#0E7EAE] border border-solid border-[#0E7EAE] animate-upscale "
-          style={{border: "1px solid #0E7EAE"}}
-        >
-          <span>$</span>
-        </Button>
-      ) : (
-        <Button
-          type="submit"
-          disabled={isSendMessageButtonDisabled}
           className="bg-[#063D60] h-12 w-12 text-[#0E7EAE]"
           style={{border: "1px solid #0E7EAE"}}
-        >
-          <RightArrowIcon className="text-[#0E7EAE]" />
-        </Button>
-      )}
+      >
+        <RightArrowIcon className="text-[#0E7EAE]" />
+      </Button>
     </form>
   );
 };

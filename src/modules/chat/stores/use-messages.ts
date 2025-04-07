@@ -34,7 +34,7 @@ interface MessagesStore {
 }
 
 export const useMessages = create<MessagesStore>((set, get) => ({
-  messagesLimit: 3,
+  messagesLimit: 30,
   messages: [],
   isFetchingMessages: true,
 

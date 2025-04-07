@@ -1,21 +1,15 @@
-import { useTranslation } from "react-i18next";
 import { useMessageBoxes } from "../hooks/use-message-boxes";
 import { useChat } from "../hooks/use-chat";
-import { MessageBox } from "@/modules/common/ui/message-box";
 import { MessageList } from "../components/message-list";
 import { Spinner } from "@telegram-apps/telegram-ui";
 import { ChatForm } from "../components/chat-form";
 import { ChatHeader } from "../components/chat-header";
 import { useMessages } from "../stores/use-messages";
-import { useGuessedWords } from "../stores/use-guessed-words";
-import { GuessedWordModal } from "../components/guessed-word-modal";
 
 export const ChatPage = () => {
-  const { t } = useTranslation();
   const { isFetchingMessages, messages } = useMessages();
 
   const {
-    limitMessageBoxClosed,
     onCloseLimitMessageBox,
     openLimitMessageBox,
   } = useMessageBoxes();
@@ -30,18 +24,11 @@ export const ChatPage = () => {
     sendMessage,
   } = useChat();
 
-  const { isShowModal, setIsShowModal } = useGuessedWords();
-
   return (
-    <div className="bg-gradient-to-b from-[#032340] to-[#085076] flex flex-col h-screen pb-safe-area-bottom w-full">
+    <div className="fixed bg-gradient-to-b from-[#032340] to-[#085076] flex flex-col h-screen pb-safe-area-bottom w-full">
       <ChatHeader />
 
-      <section className="sticky p-2 flex flex-col h-full overflow-hidden gap-4">
-        {/*{!prizePoolMessageBoxClosed && (*/}
-        {/*  <MessageBox onClose={onClosePrizePoolMessageBox}>*/}
-        {/*    {t("chat.prize_pool_message")}*/}
-        {/*  </MessageBox>*/}
-        {/*)}*/}
+      <section className="sticky p-2 flex flex-col overflow-hidden gap-4 h-screen pb-safe-area-bottom">
 
         {isFetchingMessages ? (
           <div className="flex items-center justify-center h-full">
@@ -59,16 +46,6 @@ export const ChatPage = () => {
       </section>
 
       <div className="flex flex-col gap-4 p-4 pt-0" >
-        {!limitMessageBoxClosed && (
-          <MessageBox onClose={onCloseLimitMessageBox} >
-            {t("chat.free_limit_message")}
-            {"\n"}
-            <span className="text-[#ccc]/40" >
-              {t("chat.free_limit_prize_message")}
-            </span>
-          </MessageBox>
-        )}
-
         <ChatForm
           messageValue={messageValue}
           isAwaitingAnswer={isAwaitingAnswer}
@@ -78,10 +55,6 @@ export const ChatPage = () => {
           sendMessage={sendMessage}
         />
       </div>
-
-      {isShowModal && (
-        <GuessedWordModal onClose={() => setIsShowModal(false)} />
-      )}
     </div>
   );
 };
