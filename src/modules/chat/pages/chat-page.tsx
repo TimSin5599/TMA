@@ -5,7 +5,6 @@ import { Spinner } from "@telegram-apps/telegram-ui";
 import { ChatForm } from "../components/chat-form";
 import { ChatHeader } from "../components/chat-header";
 import { useMessages } from "../stores/use-messages";
-import {useEffect} from "react";
 
 export const ChatPage = () => {
   const { isFetchingMessages, messages } = useMessages();
@@ -24,21 +23,6 @@ export const ChatPage = () => {
     isAwaitingAnswer,
     sendMessage,
   } = useChat();
-
-    useEffect(() => {
-        const handleResize = () => {
-            const currentHeight = window.innerHeight;
-            if (currentHeight < document.documentElement.clientHeight) {
-                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
 
   return (
       <div className="fixed h-full bg-gradient-to-b from-[#032340] to-[#085076] flex flex-col w-full">
