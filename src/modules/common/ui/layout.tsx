@@ -69,9 +69,6 @@ export const Layout = ({
         )}
       </div>
 
-      <div className="green-circle-left" />
-      <div className="green-circle-center" />
-      <div className="green-circle-right" />
     </>
   );
 };
