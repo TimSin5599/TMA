@@ -7,7 +7,7 @@ import { SettingsPage } from "@/modules/settings/pages/settings-page";
 export const routes: RouteProps[] = [
   {
     path: "/",
-    element: null,
+    element: <ChatPage />,
   },
   {
     path: "/informing",
