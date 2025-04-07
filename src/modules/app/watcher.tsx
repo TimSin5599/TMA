@@ -6,7 +6,7 @@ export const Watcher = () => {
 
   useEffect(() => {
     navigate("/")
-  });
+  }, []);
 
   return null;
 };
