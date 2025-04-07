@@ -5,7 +5,7 @@ export const Watcher = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate("/chat")
+    navigate("/")
   });
 
   return null;
