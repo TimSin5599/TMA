@@ -1,5 +1,5 @@
 import { Message } from "../stores/use-messages";
-import { ReactNode } from "react";
+import {ReactNode, useEffect, useRef} from "react";
 import { ChatMessage } from "./chat-message";
 
 export const MessageList = ({
@@ -13,8 +13,24 @@ export const MessageList = ({
   scrollToBottom: () => void;
   animationCompleteHandler: () => void;
 }) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    scrollToBottom();
+    scrollToBottomW()
+  }, [messages]);
+
+  const scrollToBottomW = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
+  };
+
   return (
-    <div className="flex flex-col justify-end h-full overflow-y-auto overflow-hidden gap-4 mt-10">
+    <div ref={containerRef} className="flex flex-col justify-end h-full overflow-y-auto overflow-hidden gap-4 mt-10" style={{
+      overflow: "auto",
+      scrollbarWidth: "none",
+    }}>
       {messages.map((message) => (
         <div
           key={message.id}

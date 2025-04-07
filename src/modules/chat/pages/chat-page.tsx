@@ -5,6 +5,7 @@ import { Spinner } from "@telegram-apps/telegram-ui";
 import { ChatForm } from "../components/chat-form";
 import { ChatHeader } from "../components/chat-header";
 import { useMessages } from "../stores/use-messages";
+import {useEffect} from "react";
 
 export const ChatPage = () => {
   const { isFetchingMessages, messages } = useMessages();
@@ -24,6 +25,20 @@ export const ChatPage = () => {
     sendMessage,
   } = useChat();
 
+    useEffect(() => {
+        const handleResize = () => {
+            const currentHeight = window.innerHeight;
+            if (currentHeight < document.documentElement.clientHeight) {
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
   return (
       <div className="fixed h-full bg-gradient-to-b from-[#032340] to-[#085076] flex flex-col w-full">
@@ -50,7 +65,10 @@ export const ChatPage = () => {
               )}
           </section>
 
-          <div className="flex flex-col gap-4 p-2 bottom-0 pt-0">
+          <div className="sticky flex flex-col w-full gap-4 p-2 pt-0 mb-8" style={{
+              position: '-webkit-sticky',
+              willChange: 'transform',
+          }}>
               <ChatForm
                   messageValue={messageValue}
                   isAwaitingAnswer={isAwaitingAnswer}
