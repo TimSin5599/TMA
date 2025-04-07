@@ -17,6 +17,7 @@ export const ChatForm = ({
   messageValue,
   setMessageValue,
   closeLimitMessageBox,
+  sendMessage,
 }: {
   isAwaitingAnswer: boolean;
   messageValue: string;
@@ -100,6 +101,8 @@ export const ChatForm = ({
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    sendMessage(messageValue);
 
 
     if (selectedPaymentType === "STARS") {

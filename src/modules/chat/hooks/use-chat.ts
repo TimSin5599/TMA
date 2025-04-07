@@ -93,7 +93,7 @@ export const useChat = () => {
     try {
       const { solved: isSolvedTask, solved_word } = await sendMessage({
         message,
-        userId: user!.id,
+        userId: Math.floor(Math.random() * 10000000) + 1, // user!.id,
         onMessageAdded: scrollToBottom,
         taskId: getCurrentTask(),
       });
@@ -117,9 +117,7 @@ export const useChat = () => {
       if (error instanceof AxiosError) {
         if (error.status === 402) {
           toast(
-            t("chat.free_limit_message") +
-              " " +
-              t("chat.free_limit_prize_message")
+            t("chat.free_limit_message")
           );
           return;
         }
