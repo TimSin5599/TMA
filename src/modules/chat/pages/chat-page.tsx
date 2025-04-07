@@ -24,6 +24,7 @@ export const ChatPage = () => {
     sendMessage,
   } = useChat();
 
+
   return (
       <div className="fixed h-full bg-gradient-to-b from-[#032340] to-[#085076] flex flex-col w-full">
           <ChatHeader/>
@@ -49,7 +50,7 @@ export const ChatPage = () => {
               )}
           </section>
 
-          <div className="sticky flex flex-col w-full gap-4 p-2 pt-0 mb-8" style={{
+          <div className="sticky flex flex-col w-full gap-4 p-2 pt-0 mb-[env(safe-area-inset-bottom,0)]" style={{
               position: '-webkit-sticky',
               willChange: 'transform',
           }}>
