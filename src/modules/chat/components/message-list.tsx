@@ -33,6 +33,7 @@ export const MessageList = ({
                 ? "white"
                 : "#DEF249",
             fontFamily: "'Courier New', Courier, monospace",
+            fontSize: "16px",
           }}
         >
           <ChatMessage

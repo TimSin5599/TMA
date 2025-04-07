@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Button } from "@telegram-apps/telegram-ui";
+import {Button} from "@telegram-apps/telegram-ui";
 
 export const ChatHeader = () => {
   const { t } = useTranslation();
@@ -27,17 +27,19 @@ export const ChatHeader = () => {
           <path d="M15.3 23.4L15.3 21.6L30.6 21.6L30.6 23.4L15.3 23.4Z" fill="#0D719E"/>
         </svg>
 
-        <p className="font-thin text-[#DEF249] ml-2 rounded-full p-2"
-           style={{border: "1px solid #DEF249", minWidth: "103px", height: "37px",  color: "#DEF249", letterSpacing: "-0.3px", verticalAlign: "center", fontSize: "14px"}}
+        <p className="text-[#DEF249] ml-2 rounded-full p-2"
+           style={{border: "1px solid #DEF249", minWidth: "103px", height: "37px",  color: "#DEF249", letterSpacing: "-0.3px", verticalAlign: "center", fontSize: "14px", fontFamily: "'Inter', sans-serif", fontWeight: 300}}
         >
           {t("chat.my_orders")}
         </p>
 
         <Button
-            className="font-thin bg-[#0D719E] rounded-full p-3 flex items-center justify-center"
-            style={{minWidth: "109px",height: "37px", paddingTop: "10px", paddingBottom: "10px", paddingRight: "12px", paddingLeft: "12px", letterSpacing: "-0.3px", alignItems: "center", verticalAlign: "center", fontSize: "14px"}}
+            className="bg-[#0D719E] rounded-full p-3 flex items-center justify-center"
+            style={{minWidth: "109px",height: "37px", paddingTop: "10px", paddingBottom: "10px",
+              paddingRight: "12px", paddingLeft: "12px", letterSpacing: "-0.3px", alignItems: "center",
+              fontSize: "14px", fontFamily: "'Inter', sans-serif", background: "#0D719E"}}
         >
-          UQ...xsq RU
+          <p className="font-light" style={{fontSize: "14px", fontFamily: "'Inter', sans-serif", fontWeight: 300}}>UQ...xsq RU</p>
         </Button>
       </div>
     </div>

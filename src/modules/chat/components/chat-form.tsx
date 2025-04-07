@@ -200,6 +200,7 @@ export const ChatForm = ({
         disabled={isFetchingMessages}
         placeholder={messageInputPlaceholder}
         className="bg-[#063D60] text-[#0E7EAE] placeholder-[#0E7EAE] w-full px-2 bg-transparent rounded border border-solid border-[#0E7EAE] disabled:cursor-default disabled:opacity-35"
+        style={{fontFamily: "'Courier New', Courier, monospace", fontSize: "16px"}}
       />
 
       {isMessagesLimitReached ? (

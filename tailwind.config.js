@@ -15,6 +15,7 @@ export default {
       },
       fontFamily: {
         courier: ['Courier New', 'Courier', 'monospace'],
+        inter: ['Inter', 'sans-serif'],
       }
     },
   },
