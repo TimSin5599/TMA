@@ -1,9 +1,20 @@
 import { useTranslation } from "react-i18next";
 import {Button} from "@telegram-apps/telegram-ui";
 import { miniApp } from '@telegram-apps/sdk';
+import {init} from "@telegram-apps/sdk-react";
+import {useEffect} from "react";
 
 export const ChatHeader = () => {
     const { t } = useTranslation();
+
+    if (miniApp.mount.isAvailable()) {
+        miniApp.mount();
+        miniApp.isMounted();
+    }
+
+    useEffect(() => {
+        init();
+    }, []);
 
   // const lang = i18n.language === "en" ? "en" : "ru";
 
