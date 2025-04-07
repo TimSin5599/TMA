@@ -25,10 +25,12 @@ export const ChatPage = () => {
   } = useChat();
 
   return (
-    <div className="fixed bg-gradient-to-b from-[#032340] to-[#085076] flex flex-col h-screen pb-safe-area-bottom w-full">
+    <div className="fixed bg-gradient-to-b from-[#032340] to-[#085076] flex flex-col h-full w-full">
       <ChatHeader />
 
-      <section className="sticky p-2 flex flex-col overflow-hidden gap-4 h-screen pb-safe-area-bottom">
+      <section className="sticky p-2 flex flex-col overflow-hidden gap-4 h-screen" style={{bottom: 'env(safe-area-inset-bottom)',
+          transform: 'translateZ(0)',
+      }}>
 
         {isFetchingMessages ? (
           <div className="flex items-center justify-center h-full">
