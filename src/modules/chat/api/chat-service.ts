@@ -15,6 +15,7 @@ export const chatService = {
       response: string;
       solved: boolean;
       solved_word: string;
+      type: "message" | "img";
     }>(
       "/ask_question",
       { question: message, task_id: taskId },
@@ -25,7 +26,7 @@ export const chatService = {
       }
     );
 
-    return data;
+    return {response: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoJCKnlaqTdeGYFclEH4rjYzQtpmKEpeCskQ&s", solved: data.solved, solved_word: data.solved_word, type: "img"};
   },
 
   getMessages: async ({
@@ -53,23 +54,27 @@ export const chatService = {
       const messages: Message[] = [];
 
       response.data.msgs.forEach((message) => {
+
+
         if ("system" in message) {
+          const isImage = message.system.startsWith("http") && /\.(png|jpe?g|gif|bmp|webp)$/i.test(message.system);
           messages.push({
             from: "bot",
             id: message.id,
             isNew: false,
             text: message.system,
-            type: "message",
+            type: isImage ? "img" : "message",
           });
         }
 
         if ("user" in message) {
+          const isImage = message.user.startsWith("http") && /\.(png|jpe?g|gif|bmp|webp)$/i.test(message.user);
           messages.push({
             from: "user",
             id: message.id,
             isNew: false,
             text: message.user,
-            type: "message",
+            type: isImage ? "img" : "message",
           });
         }
       });

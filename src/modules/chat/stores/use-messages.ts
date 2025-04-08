@@ -7,7 +7,7 @@ export type Message = {
   from: "user" | "bot";
   id: number;
   isNew: boolean;
-  type: "message" | "words";
+  type: "message" | "words" | "img";
 };
 
 interface MessagesStore {
@@ -103,13 +103,16 @@ export const useMessages = create<MessagesStore>((set, get) => ({
         taskId,
       });
 
-      addMessage({
-        text: data.response,
-        from: "bot",
-        id: Date.now(),
-        isNew: true,
-        type: "message",
-      });
+      if (data.type === "img" || data.type === "message") {
+        addMessage({
+          text: data.response,
+          from: "bot",
+          id: Date.now(),
+          isNew: true,
+          type: data.type,
+        });
+      }
+
 
       return data;
     } catch (error) {

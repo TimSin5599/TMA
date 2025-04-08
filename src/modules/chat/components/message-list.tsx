@@ -1,5 +1,5 @@
 import { Message } from "../stores/use-messages";
-import {ReactNode, useEffect, useRef} from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import { ChatMessage } from "./chat-message";
 
 export const MessageList = ({
@@ -17,7 +17,7 @@ export const MessageList = ({
 
   useEffect(() => {
     scrollToBottom();
-    scrollToBottomW()
+    scrollToBottomW();
   }, [messages]);
 
   const scrollToBottomW = () => {
