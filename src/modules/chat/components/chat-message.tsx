@@ -20,7 +20,8 @@ export const ChatMessage = ({
       />
     );
   }
-  if (message.from === "bot" && message.isNew && message.type == "img") {
+
+  if (message.from === "bot" && message.type == "img") {
     return (
         <div className="flex justify-center">
           <img
